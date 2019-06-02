@@ -14,9 +14,10 @@ def home():
 
 @app.route('/book/add', methods=['GET', 'POST'])
 def book_add():
+    book = 0
     if request.method == 'GET':
         title = 'Cadastrar Livro'
-        return render_template('book_form.html', title=title)
+        return render_template('book_form.html', title=title, book=book)
     
     book = Book(
         title=request.form.get('title'),
@@ -28,6 +29,25 @@ def book_add():
     )
 
     db.session.add(book)
+    db.session.commit()
+
+    return redirect(url_for('home'))
+
+
+@app.route('/book/edit/<int:id>', methods=['GET', 'POST'])
+def book_edit(id):
+    book = Book.query.get_or_404(id)
+    if request.method == 'GET':
+        title = 'Editar Livro'
+        return render_template('book_form.html', title=title, book=book)
+    
+    book.title=request.form.get('title')
+    book.author=request.form.get('author')
+    book.publisher=request.form.get('publisher')
+    book.edition = request.form.get('edition')
+    book.pages_number = request.form.get('pages_number')
+    book.img_url = request.form.get('img_url')
+
     db.session.commit()
 
     return redirect(url_for('home'))

@@ -15,9 +15,9 @@ class Book(db.Model):
         self.title = title
         self.author = author
         self.publisher = publisher
-        self.edition = edition
+        self.edition = edition or None
         self.pages_number = pages_number
-        self.img_url = img_url
+        self.img_url = img_url or None
 
 
     def __repr__(self):
