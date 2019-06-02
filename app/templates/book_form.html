@@ -1,21 +1,56 @@
-<form method="POST">
-    <label for="title">Titulo</label>
-    <input type="text" name="title" value="{{ book.title|default('', true) }}" required>
-    <br><br>
-    <label for="author">Autor</label>
-    <input type="text" name="author" value="{{ book.author|default('', true) }}" required>
-    <br><br>
-    <label for="publisher">Editora</label>
-    <input type="text" name="publisher" value="{{ book.publisher|default('', true) }}">
-    <br><br>
-    <label for="edition">Edição</label>
-    <input type="number" name="edition" value="{{ book.edition|default('', true) }}">
-    <br><br>
-    <label for="pages_number">Número de Páginas</label>
-    <input type="number" name="pages_number" value="{{ book.pages_number|default('', true) }}" required>
-    <br><br>
-    <label for="img_url">Link da Imagem</label>
-    <input type="url" name="img_url" value="{{ book.img_url|default('', true) }}">
-    <br><br>
-    <input type="submit" value="Submeter">
-</form>
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            <h1>{{ title }}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <form method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="title">Titulo</label>
+                    <input type="text" name="title" value="{{ book.title|default('', true) }}" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <label for="author">Autor</label>
+                    <input type="text" name="author" value="{{ book.author|default('', true) }}" required>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <label for="publisher">Editora</label>
+                    <input type="text" name="publisher" value="{{ book.publisher|default('', true) }}">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <label for="edition">Edição</label>
+                    <input type="number" name="edition" value="{{ book.edition|default('', true) }}">
+                </div>
+                <div class="input-field col s12 m6">
+                    <label for="pages_number">Número de Páginas</label>
+                    <input type="number" name="pages_number" value="{{ book.pages_number|default('', true) }}" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="img_url">Link da Imagem</label>
+                    <input type="url" name="img_url" value="{{ book.img_url|default('', true) }}">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn waves-effect waves-light">
+                Submeter <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+{% endblock %}

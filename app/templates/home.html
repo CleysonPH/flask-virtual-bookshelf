@@ -31,7 +31,7 @@
                                 <td>{{ book.title }}</td>
                                 <td>{{ book.author }}</td>
                                 <td>{{ book.publisher }}</td>
-                                <td>{{ book.edition|default('', true) }}</td>
+                                <td>{% if book.edition %}{{ book.edition }}ª{% endif %}</td>
                                 <td>{{ book.pages_number }}</td>
                                 <td>
                                     <a href="{{ url_for('book_edit', id=book.id) }}">Editar</a>
