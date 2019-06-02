@@ -34,9 +34,21 @@
             </div>
             
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s12 m6">
                     <label for="img_url">Link da Imagem</label>
                     <input type="url" name="img_url" value="{{ book.img_url|default('', true) }}">
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" name="isbn" value="{{ book.isbn|default('', true) }}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea class="materialize-textarea" name="description">{{ book.description|default('', false) }}</textarea>
+                    <label for="description">Descrição</label>
                 </div>
             </div>
             

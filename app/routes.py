@@ -48,9 +48,11 @@ def book_add():
         title=request.form.get('title'),
         author=request.form.get('author'),
         publisher=request.form.get('publisher'),
-        edition = request.form.get('edition'),
-        pages_number = request.form.get('pages_number'),
-        img_url = request.form.get('img_url')
+        edition=request.form.get('edition'),
+        pages_number=request.form.get('pages_number'),
+        img_url=request.form.get('img_url'),
+        isbn=request.form.get('isbn'),
+        description=request.form.get('description'),
     )
 
     db.session.add(book)
@@ -66,12 +68,14 @@ def book_edit(id):
         title = 'Editar Livro'
         return render_template('book_form.html', title=title, book=book)
     
-    book.title=request.form.get('title')
-    book.author=request.form.get('author')
-    book.publisher=request.form.get('publisher')
+    book.title = request.form.get('title')
+    book.author = request.form.get('author')
+    book.publisher = request.form.get('publisher')
     book.edition = request.form.get('edition')
     book.pages_number = request.form.get('pages_number')
     book.img_url = request.form.get('img_url')
+    book.isbn = request.form.get('isbn')
+    book.description = request.form.get('description')
 
     db.session.commit()
 

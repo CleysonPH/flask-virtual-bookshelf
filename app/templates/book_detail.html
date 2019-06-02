@@ -15,7 +15,7 @@
             <img src="{{ book.img_url }}" class="materialboxed responsive-img"  alt="Imagem de capa do livro {{ book.title }}">
         </div>
 
-        <div class="col s8 flow-text">
+        <div class="col s8">
             <ul>
                 <li><strong>Titulo:</strong> {{ book.title }}</li>
                 <li><strong>Autor:</strong> {{ book.author }}</li>
@@ -25,8 +25,21 @@
                 {% if book.edition %}
                    <li><strong>Edição:</strong> {{ book.edition }}ª</li>
                 {% endif %}
+                <li><strong>ISBN:</strong> {{ book.isbn }}</li>
                 <li><strong>Páginas:</strong> {{ book.pages_number }}</li>
             </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <h4>Descrição do Livro</h4>
+            <p>
+                {% autoescape false %}
+                    {{ book.description|replace("\n", "<br/>") }}
+                {% endautoescape %}
+                
+            </p>
         </div>
     </div>
 {% endblock %}

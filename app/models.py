@@ -9,15 +9,19 @@ class Book(db.Model):
     edition = db.Column(db.Integer, nullable=True)
     pages_number = db.Column(db.Integer, nullable=False)
     img_url = db.Column(db.String(250), nullable=False, default='https://via.placeholder.com/350x500')
+    isbn = db.Column(db.String(20), nullable=False)
+    description = db.Column(db.Text, nullable=False, default='Nenhuma descrição foi dada')
 
 
-    def __init__(self, title, author, publisher, edition, pages_number, img_url):
+    def __init__(self, title, author, publisher, edition, pages_number, img_url, isbn, description):
         self.title = title
         self.author = author
         self.publisher = publisher
         self.edition = edition or None
         self.pages_number = pages_number
         self.img_url = img_url or None
+        self.isbn = isbn
+        self.description = description or None
 
 
     def __repr__(self):
