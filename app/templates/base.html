@@ -39,7 +39,31 @@
 
         {% block content %}{% endblock %}
     </main>
-    
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Estante Virtual</h5>
+                    <p class="grey-text text-lighten-4">CRUD de Livros feito em Python, Flask e algumas extenções.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Libs utilizadas nesse projeto</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" target="_blank" href="https://pypi.org/project/Flask/">Flask</a></li>
+                        <li><a class="grey-text text-lighten-3" target="_blank" href="https://pypi.org/search/?q=flask-sqlalchemy">Flask-SQLAlchemy</a></li>
+                        <li><a class="grey-text text-lighten-3" target="_blank" href="https://pypi.org/project/python-dotenv/">python-dotenv</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 Desenvolivdo por <a class="grey-text text-lighten-4" href="https://github.com/CleysonPH" target="_blank">CleysonPH</a>
+                <a class="grey-text text-lighten-4 right" href="https://github.com/CleysonPH/flask-virtual-bookshelf" target="_blank">Código Fonte</a>
+            </div>
+        </div>
+    </footer>
     
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
