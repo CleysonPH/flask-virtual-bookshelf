@@ -26,12 +26,27 @@
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('book_add') }}">Adicionar Livro</a></li>
             </ul>
+            <form method="GET" action="{{ url_for('book_search') }}" class="hide-on-med-and-down">
+                <div class="right input-field">
+                    <input type="search" name="search" placeholder="Buscar Livro" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
         </div>
     </nav>
     
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('book_add') }}">Adicionar Livro</a></li>
+
+        <form method="GET" action="{{ url_for('book_search') }}">
+            <div class="input-field">
+                <input type="search" name="search" placeholder="Buscar Livro" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
     </ul>
 
     <main class="container">

@@ -16,7 +16,17 @@ def home():
     title = 'Lista de Livros'
     books = Book.query.order_by(Book.title).all()
 
-    return render_template('home.html', title=title, books=books)
+    return render_template('book_list.html', title=title, books=books)
+
+
+@app.route('/book/search')
+def book_search():
+    title = 'Resultado da Busca'
+    search = request.args.get('search')
+
+    books = Book.query.filter(Book.title.contains(search)).all()
+
+    return render_template('book_list.html', title=title, books=books)
 
 
 @app.route('/book/detail/<int:id>')
