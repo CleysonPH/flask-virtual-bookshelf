@@ -31,3 +31,13 @@ def book_add():
     db.session.commit()
 
     return redirect(url_for('home'))
+
+
+@app.route('/book/remove/<int:id>')
+def book_delete(id):
+    book = Book.query.get_or_404(id)
+
+    db.session.delete(book)
+    db.session.commit()
+
+    return redirect(url_for('home'))
