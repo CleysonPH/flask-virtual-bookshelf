@@ -12,6 +12,14 @@ def home():
     return render_template('home.html', title=title, books=books)
 
 
+@app.route('/book/detail/<int:id>')
+def book_detail(id):
+    book = Book.query.get_or_404(id)
+    title = 'Detalhes do Livro'
+
+    return render_template('book_detail.html', title=title, book=book)
+
+
 @app.route('/book/add', methods=['GET', 'POST'])
 def book_add():
     book = 0

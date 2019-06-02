@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s4">
+            <img src="{{ book.img_url }}" class="materialboxed responsive-img"  alt="Imagem de capa do livro {{ book.title }}">
+        </div>
+
+        <div class="col s8 flow-text">
+            <ul>
+                <li><strong>Titulo:</strong> {{ book.title }}</li>
+                <li><strong>Autor:</strong> {{ book.author }}</li>
+                {% if book.publisher %}
+                    <li><strong>Editora:</strong> {{ book.publisher }}</li>
+                {% endif %}
+                {% if book.edition %}
+                   <li><strong>Edição:</strong> {{ book.edition }}ª</li>
+                {% endif %}
+                <li><strong>Páginas:</strong> {{ book.pages_number }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems);
+        });
+    </script>
+{% endblock %}
