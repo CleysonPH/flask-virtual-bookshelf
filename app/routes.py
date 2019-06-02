@@ -4,6 +4,13 @@ from app import app, db
 from app.models import Book
 
 
+@app.errorhandler(404)
+def error_404(e):
+    title = '404 página não encontrada'
+    
+    return render_template('404.html', title=title), 404
+
+
 @app.route('/')
 def home():
     title = 'Lista de Livros'

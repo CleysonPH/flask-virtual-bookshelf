@@ -12,7 +12,11 @@
 
     {% block style %}{% endblock %}
 
-    <title>Estante Virtual - {{ title }}</title>
+    <title>
+        {% block title %}
+            Estante Virtual - {{ title }}
+        {% endblock %}
+    </title>
 </head>
 <body>
     <nav>
@@ -33,7 +37,9 @@
     <main class="container">
         <header class="row">
             <div class="col s12">
-                <h2>{{ title }}</h2>
+                {% block content_title %}
+                    <h2>{{ title }}</h2>
+                {% endblock %}
             </div>
         </header>
 
