@@ -6,7 +6,7 @@ from app.models import Book
 
 @app.errorhandler(404)
 def error_404(e):
-    title = '404 página não encontrada'
+    title = '404 Página Não Encontrada'
     
     return render_template('404.html', title=title), 404
 
