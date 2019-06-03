@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 
 from app import app, db
 from app.models import Book
@@ -58,6 +58,7 @@ def book_add():
     db.session.add(book)
     db.session.commit()
 
+    flash(f"Livro cadastrado com sucesso!")
     return redirect(url_for('home'))
 
 
@@ -79,6 +80,7 @@ def book_edit(id):
 
     db.session.commit()
 
+    flash('Livro editado com sucesso!')
     return redirect(url_for('home'))
 
 
@@ -89,4 +91,5 @@ def book_delete(id):
     db.session.delete(book)
     db.session.commit()
 
+    flash('Livro editado com sucesso!')
     return redirect(url_for('home'))
