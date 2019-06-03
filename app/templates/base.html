@@ -19,13 +19,39 @@
     </title>
 </head>
 <body>
+    <!-- Dropdown MainNav Author Structure -->
+    <ul id="dropdown-author" class="dropdown-content">
+        <li><a href="{{ url_for('author_list') }}">Listar</a></li>
+        <li><a href="{{ url_for('author_add') }}">Adicionar</a></li>
+    </ul>
+
+    <!-- Dropdown MainNav Book Structure -->
+    <ul id="dropdown-book" class="dropdown-content">
+        <li><a href="{{ url_for('home') }}">Listar</a></li>
+        <li><a href="{{ url_for('book_add') }}">Adicionar</a></li>
+    </ul>
+
+    <!-- Dropdown Sidenav Author Structure -->
+    <ul id="dropdown-author-sidenav" class="dropdown-content">
+        <li><a href="{{ url_for('author_list') }}">Listar</a></li>
+        <li><a href="{{ url_for('author_add') }}">Adicionar</a></li>
+    </ul>
+
+    <!-- Dropdown Sidenav Book Structure -->
+    <ul id="dropdown-book-sidenav" class="dropdown-content">
+        <li><a href="{{ url_for('home') }}">Listar</a></li>
+        <li><a href="{{ url_for('book_add') }}">Adicionar</a></li>
+    </ul>
+
     <nav>
         <div class="nav-wrapper">
             <a href="{{ url_for('home') }}" class="brand-logo">Estante Virtual</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('book_add') }}">Adicionar Livro</a></li>
-                <li><a href="{{ url_for('author_add') }}">Adicionar Autor</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown-book">Livro<i class="material-icons right">arrow_drop_down</i></a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown-author">Autor<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             <form method="GET" action="{{ url_for('book_search') }}" class="hide-on-med-and-down">
                 <div class="right input-field">
@@ -39,8 +65,10 @@
     
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('book_add') }}">Adicionar Livro</a></li>
-        <li><a href="{{ url_for('author_add') }}">Adicionar Autor</a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown-book-sidenav">Livro<i class="material-icons right">arrow_drop_down</i></a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown-author-sidenav">Autor<i class="material-icons right">arrow_drop_down</i></a></li>
 
         <form method="GET" action="{{ url_for('book_search') }}">
             <div class="input-field">
@@ -92,9 +120,18 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
+            var sidenav = document.querySelectorAll('.sidenav');
+            var instances_sidenav = M.Sidenav.init(sidenav);
+
+            var dropdown = document.querySelectorAll('.dropdown-trigger');
+            var instances_dropdown = M.Dropdown.init(dropdown);
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems);
+        });
+
 
         {% with messages = get_flashed_messages() %}
             {% if messages %}
