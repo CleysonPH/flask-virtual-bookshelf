@@ -25,6 +25,7 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('book_add') }}">Adicionar Livro</a></li>
+                <li><a href="{{ url_for('author_add') }}">Adicionar Autor</a></li>
             </ul>
             <form method="GET" action="{{ url_for('book_search') }}" class="hide-on-med-and-down">
                 <div class="right input-field">
@@ -39,6 +40,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('book_add') }}">Adicionar Livro</a></li>
+        <li><a href="{{ url_for('author_add') }}">Adicionar Autor</a></li>
 
         <form method="GET" action="{{ url_for('book_search') }}">
             <div class="input-field">

@@ -11,14 +11,14 @@
 
 {% block content %}
     <div class="row">
-        <div class="col s4">
+        <div class="col s12 m4">
             <img src="{{ book.img_url }}" class="materialboxed responsive-img"  alt="Imagem de capa do livro {{ book.title }}">
         </div>
 
-        <div class="col s8">
+        <div class="col s12 m8">
             <ul>
                 <li><strong>Titulo:</strong> {{ book.title }}</li>
-                <li><strong>Autor:</strong> {{ book.author }}</li>
+                <li><strong>Autor:</strong> {{ book.author.name }}</li>
                 {% if book.publisher %}
                     <li><strong>Editora:</strong> {{ book.publisher }}</li>
                 {% endif %}

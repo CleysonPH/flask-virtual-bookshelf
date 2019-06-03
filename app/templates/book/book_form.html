@@ -12,8 +12,13 @@
             
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <label for="author">Autor</label>
-                    <input type="text" name="author" value="{{ book.author|default('', true) }}" required>
+                    <select name="author">
+                        <option value="" disabled selected>Escolha o autor</option>
+                        {% for author in authors %}
+                            <option value="{{ author.id }}" {% if book.author.id == author.id %} selected {% endif %}>{{ author.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Autor</label>
                 </div>
 
                 <div class="input-field col s12 m6">
@@ -57,4 +62,13 @@
             </button>
         </form>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
 {% endblock %}

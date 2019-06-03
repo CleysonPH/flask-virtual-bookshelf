@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <form method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="title">Nome</label>
+                    <input type="text" name="name" value="{{ author.name|default('', true) }}" required>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="author">Link da Imagem</label>
+                    <input type="text" name="img_url" value="{{ author.img_url|default('', true) }}" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea class="materialize-textarea" name="description">{{ author.description|default('', false) }}</textarea>
+                    <label for="description">Descrição</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn waves-effect waves-light">
+                Submeter <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+{% endblock %}
