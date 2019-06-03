@@ -76,8 +76,10 @@ def book_edit(id):
         title = 'Editar Livro'
         return render_template('book/book_form.html', title=title, book=book, authors=authors)
     
+    author = Author.query.get(request.form.get('author'))
+
     book.title = request.form.get('title')
-    book.author = request.form.get('author')
+    book.author = author
     book.publisher = request.form.get('publisher')
     book.edition = request.form.get('edition')
     book.pages_number = request.form.get('pages_number')
