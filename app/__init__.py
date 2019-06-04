@@ -8,5 +8,7 @@ app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 
 
-from app import routes
+from app.core import routes
+from app.book import routes
+from app.author import routes
 from app import models
