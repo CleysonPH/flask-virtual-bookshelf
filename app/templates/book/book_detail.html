@@ -18,7 +18,11 @@
         <div class="col s12 m8">
             <ul>
                 <li><strong>Titulo:</strong> {{ book.title }}</li>
-                <li><strong>Autor:</strong> {{ book.author.name }}</li>
+                <li>
+                    <strong>Autor:</strong> <a href="{{ url_for('author_detail', id=book.author.id) }}">
+                        {{ book.author.name }}
+                    </a>
+                </li>
                 {% if book.publisher %}
                     <li><strong>Editora:</strong> {{ book.publisher }}</li>
                 {% endif %}

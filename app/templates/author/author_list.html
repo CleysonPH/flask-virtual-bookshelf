@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col s12 m10">
                                     <span class="title">
-                                        <a href="">{{ author.name }}</a>
+                                        <a href="{{ url_for('author_detail', id=author.id) }}">{{ author.name }}</a>
                                     </span>
                                     <br><br>
                                     <p>

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        h4  {
+            padding-top: 0;
+            margin-top: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12 m4">
+            <img src="{{ author.img_url }}" class="materialboxed responsive-img"  alt="Imagem do(a) autor(a) {{ author.name }}">
+        </div>
+
+        <div class="col s12 m8">
+            <h4>{{ author.name }}</h4>
+
+            <h5>Descrição do Autor</h5>
+            <p>
+                {% autoescape false %}
+                    {{ author.description|replace("\n", "<br/>") }}
+                {% endautoescape %}    
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <h4>Livros do(a) mesm(a) autor(a)</h4>
+
+            <div class="row">
+                {% for book in author.books %}
+                    <div class="col s6 m2">
+                        <a href="{{ url_for('book_detail', id=book.id) }}">
+                            <img src="{{ book.img_url }}" alt="" class="responsive-img">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems);
+        });
+    </script>
+{% endblock %}

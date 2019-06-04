@@ -146,7 +146,7 @@ def author_edit(id):
     db.session.commit()
 
     flash("Autor editado com sucesso!")
-    return redirect(url_for('author_list'))
+    return redirect(url_for('author_detail', id=author.id))
 
 
 @app.route('/author/remove/<int:id>')
@@ -158,3 +158,11 @@ def author_remove(id):
 
     flash("Autor deletado com sucesso!")
     return redirect(url_for('author_list'))
+
+
+@app.route('/author/detail/<int:id>')
+def author_detail(id):
+    author = Author.query.get_or_404(id)
+    title = 'Detalhes do Autor'
+
+    return render_template('author/author_detail.html', title=title, author=author)
