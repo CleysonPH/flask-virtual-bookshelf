@@ -1,7 +1,8 @@
 from flask import render_template, request, redirect, url_for, flash
 
 from app import app, db
-from app.models import Book, Author
+from app.author.models import Author
+from app.book.models import Book
 
 
 @app.route('/author/list')

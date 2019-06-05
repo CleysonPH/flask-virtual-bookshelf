@@ -10,5 +10,6 @@ db = SQLAlchemy(app)
 
 from app.core import routes
 from app.book import routes
+from app.book import models
 from app.author import routes
-from app import models
+from app.author import models
